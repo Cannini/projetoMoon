@@ -25,7 +25,7 @@ fonteMorte = pygame.font.SysFont("arial",120)
 pygame.mixer.music.load("recursos/battle.mp3")
 
 branco = (255,255,255)
-preto = (0, 0 ,0 )
+preto = (0,0,0 )
 amarelo = (255,255,0)
 
 def jogar(nome):
@@ -57,7 +57,7 @@ def jogar(nome):
                 movimentoXPersona = 0
             elif evento.type == pygame.KEYUP and evento.key == pygame.K_LEFT:
                 movimentoXPersona = 0
-                
+                    
         posicaoXPersona = posicaoXPersona + movimentoXPersona            
         posicaoYPersona = posicaoYPersona + movimentoYPersona            
         
@@ -73,7 +73,7 @@ def jogar(nome):
         
             
         tela.fill(branco)
-        tela.blit(fundo, (0,0) )
+        tela.blit(fundo, (0,0) )    
         pygame.draw.circle(tela, amarelo, (755,51), 40, 0 )
         tela.blit( guardian, (posicaoXPersona, posicaoYPersona) )
         
