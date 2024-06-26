@@ -11,13 +11,14 @@ guardian = pygame.image.load("recursos/guardian.png")
 fundo = pygame.image.load("recursos/fundo.png")
 fundoStart = pygame.image.load("recursos/fundoStart.png")
 fundoDead = pygame.image.load("recursos/morte.png")
-
+bola = pygame.image.load("recursos/bola.png")
 sword = pygame.image.load("recursos/sword.png")
 tamanho = (800,600)
 tela = pygame.display.set_mode( tamanho ) 
 pygame.display.set_caption("projetoMoon")
 pygame.display.set_icon(icone)
 castSound = pygame.mixer.Sound("recursos/cast.wav")
+bolaSound = pygame.mixer.Sound("recursos/bola.wav")
 youdiedSound = pygame.mixer.Sound("recursos/youdied.wav")
 fonte = pygame.font.SysFont("comicsans",28)
 fonteStart = pygame.font.SysFont("comicsans",55)
@@ -29,20 +30,26 @@ preto = (0,0,0 )
 amarelo = (255,255,0)
 
 def jogar(nome):
+    pygame.mixer.Sound.play(bolaSound)
     pygame.mixer.Sound.play(castSound)
     pygame.mixer.music.play(-1)
     posicaoXPersona = 550
     posicaoYPersona = 450
     movimentoXPersona  = 0
     movimentoYPersona  = 0
+    posicaoXBola = 400
+    posicaoYBola = -240
+    velocidadeBola = 1
     posicaoXSword = 400
     posicaoYSword = -240
     velocidadeSword = 1
     pontos = 0
     larguraPersona = 250
     alturaPersona = 127
-    larguraSword  = 40
-    alturaSword  = 205
+    larguraSword  = 50
+    alturaSword  = 250
+    larguraBola = 40
+    alturaBola = 205
     dificuldade  = 20
 
     while True:
@@ -79,14 +86,23 @@ def jogar(nome):
         
         posicaoYSword = posicaoYSword + velocidadeSword
         if posicaoYSword > 600:
-            posicaoYSword = -230
+            posicaoYSword = -240
             pontos = pontos + 1
             velocidadeSword = velocidadeSword + 1
             posicaoXSword = random.randint(0,800)
             pygame.mixer.Sound.play(castSound)
             
+        posicaoYBola = posicaoYBola + velocidadeBola
+        if posicaoYBola > 400:
+            posicaoYBola = -240
+            pontos = pontos + 1
+            velocidadeBola = velocidadeBola + 1
+            posicaoXSword = random.randint(0,800)
+            pygame.mixer.Sound.play(bolaSound)                   
             
-        tela.blit( sword, (posicaoXSword, posicaoYSword) )
+            
+        tela.blit( sword, (posicaoXSword, posicaoYSword) )                       
+        tela.blit( bola, (posicaoXBola, posicaoYBola) )
         
         texto = fonte.render(nome+"- Pontos: "+str(pontos), True, branco)
         tela.blit(texto, (10,10))
@@ -95,10 +111,15 @@ def jogar(nome):
         pixelsPersonaY = list(range(posicaoYPersona, posicaoYPersona+alturaPersona))
         pixelsSwordX = list(range(posicaoXSword, posicaoXSword + larguraSword))
         pixelsSwordY = list(range(posicaoYSword, posicaoYSword + alturaSword))
+        pixelsBolaX = list(range(posicaoXBola, posicaoXBola + larguraBola))
+        pixelsBolaY = list(range(posicaoYBola, posicaoYBola + alturaBola))
         
         #print( len( list( set(pixelsSwordX).intersection(set(pixelsPersonaX))   ) )   )
         if  len( list( set(pixelsSwordY).intersection(set(pixelsPersonaY))) ) > dificuldade:
             if len( list( set(pixelsSwordX).intersection(set(pixelsPersonaX))   ) )  > dificuldade:
+                dead(nome, pontos)
+        if  len( list( set(pixelsBolaY).intersection(set(pixelsPersonaY))) ) > dificuldade:
+            if len( list( set(pixelsBolaX).intersection(set(pixelsPersonaX))   ) )  > dificuldade:
                 dead(nome, pontos)
         
     

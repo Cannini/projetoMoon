@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{'pp': 0, 'dfdf': 0, 'rfdsfvsgfs': 0, 'dasaasda': 0, 'sdfdhsffds': 0, 'sadfdssdfdsASa1': 0, 'sadfdssdfdsASa2': 0, 'sadfdssdfdsASa3': 0, 'sadfdssdfdsASa4': 0, 'sadfdssdfdsASa5': 0, 'sadfdssdfdsASa6': 0, 'sadfdssdfdsASa7': 0, 'sadfdssdfdsASa8': 0, 'sadfdssdfdsASa9': 0, 'sadfdssdfdsASa11': 0, 'Marcos': 1, 'Marcos Final': 1, 'MArcãooo': 7, 'gabriel': 12, 'hhhhhj': 0, 'ss': 0, 'dsds': 0, 'hgjhggh': 0, 'djakjdas': 18, 'sda ': 2, 'dhasa': 0, 'dajdsk': 0, 'sad': 0, 'sdada': 0, 'asd': 0, 'sda': 0, 'asdasd': 0, 'g': 0, '': 0}
-=======
-{'pp': 0, 'dfdf': 0, 'rfdsfvsgfs': 0, 'dasaasda': 0, 'sdfdhsffds': 0, 'sadfdssdfdsASa1': 0, 'sadfdssdfdsASa2': 0, 'sadfdssdfdsASa3': 0, 'sadfdssdfdsASa4': 0, 'sadfdssdfdsASa5': 0, 'sadfdssdfdsASa6': 0, 'sadfdssdfdsASa7': 0, 'sadfdssdfdsASa8': 0, 'sadfdssdfdsASa9': 0, 'sadfdssdfdsASa11': 0, 'Marcos': 1, 'Marcos Final': 1, 'MArcãooo': 7, 'gabriel': 12, 'hhhhhj': 0, 'ss': 0, 'dsds': 0, 'hgjhggh': 0, 'djakjdas': 18, 'sda ': 2, 'dhasa': 0, 'dajdsk': 0, 'sad': 0, 'sdada': 0, 'asd': 0, 'sda': 0, 'asdasd': 0, 'g': 0, '': 0, 'ghgh': 0, 'cs': 0, 's': 0}
->>>>>>> 9fa86173f58ca232e9f215036313b56f5245b06b
+{'': 1, 'das': 5, 'sdhajksdas': 12, 'jhkhkhkhkj': 5, 'kjhjk': 1, 'sadkj': 3, 'shda': 5, 'kmk': 5, 'jbn': 5, 'dasdas': 463, 'dsad': 0, 'asd': 463, 'jhkjxdas': 2, 'jaksd': 12, 'jj': 1}
