@@ -26,13 +26,13 @@ pygame.mixer.music.load("recursos/battle.mp3")
 
 branco = (255,255,255)
 preto = (0, 0 ,0 )
-
+amarelo = (255,255,0)
 
 def jogar(nome):
     pygame.mixer.Sound.play(castSound)
     pygame.mixer.music.play(-1)
-    posicaoXPersona = 400
-    posicaoYPersona = 300
+    posicaoXPersona = 550
+    posicaoYPersona = 450
     movimentoXPersona  = 0
     movimentoYPersona  = 0
     posicaoXSword = 400
@@ -41,8 +41,8 @@ def jogar(nome):
     pontos = 0
     larguraPersona = 250
     alturaPersona = 127
-    larguraSword  = 50
-    alturaSword  = 250
+    larguraSword  = 40
+    alturaSword  = 205
     dificuldade  = 20
 
     while True:
@@ -57,14 +57,6 @@ def jogar(nome):
                 movimentoXPersona = 0
             elif evento.type == pygame.KEYUP and evento.key == pygame.K_LEFT:
                 movimentoXPersona = 0
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_UP:
-                movimentoYPersona = -10
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_DOWN:
-                movimentoYPersona = 10
-            elif evento.type == pygame.KEYUP and evento.key == pygame.K_UP:
-                movimentoYPersona = 0
-            elif evento.type == pygame.KEYUP and evento.key == pygame.K_DOWN:
-                movimentoYPersona = 0
                 
         posicaoXPersona = posicaoXPersona + movimentoXPersona            
         posicaoYPersona = posicaoYPersona + movimentoYPersona            
@@ -82,7 +74,7 @@ def jogar(nome):
             
         tela.fill(branco)
         tela.blit(fundo, (0,0) )
-        pygame.draw.circle(tela, preto, (posicaoXPersona,posicaoYPersona), 40, 0 )
+        pygame.draw.circle(tela, amarelo, (755,51), 40, 0 )
         tela.blit( guardian, (posicaoXPersona, posicaoYPersona) )
         
         posicaoYSword = posicaoYSword + velocidadeSword
