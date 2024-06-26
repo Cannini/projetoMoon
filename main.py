@@ -52,6 +52,12 @@ def jogar(nome):
     alturaBola = 205
     dificuldade  = 20
 
+    #circulo amarelo 
+    raio = 50
+    pulse = 1
+    maximo_raio = 60
+    minimo_raio =40
+
     while True:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -81,7 +87,11 @@ def jogar(nome):
             
         tela.fill(branco)
         tela.blit(fundo, (0,0) )    
-        pygame.draw.circle(tela, amarelo, (755,51), 40, 0 )
+        raio += pulse
+        if raio >= maximo_raio or raio <=minimo_raio:
+            pulse = -pulse 
+        pygame.draw.circle(tela, amarelo, (750,100), raio )
+        
         tela.blit( guardian, (posicaoXPersona, posicaoYPersona) )
         
         posicaoYSword = posicaoYSword + velocidadeSword
@@ -93,7 +103,7 @@ def jogar(nome):
             pygame.mixer.Sound.play(castSound)
             
         posicaoYBola = posicaoYBola + velocidadeBola
-        if posicaoYBola > 400:
+        if posicaoYBola > 600:
             posicaoYBola = -240
             pontos = pontos + 1
             velocidadeBola = velocidadeBola + 1
