@@ -6,43 +6,43 @@ from tkinter import simpledialog
 pygame.init()
 
 relogio = pygame.time.Clock()
-icone  = pygame.image.load("assets/icone.png")
-iron = pygame.image.load("assets/iron.png")
-fundo = pygame.image.load("assets/fundo.png")
-fundoStart = pygame.image.load("assets/fundoStart.png")
-fundoDead = pygame.image.load("assets/fundoDead.png")
+icone  = pygame.image.load("recursos/icone.png")
+guardian = pygame.image.load("recursos/guardian.png")
+fundo = pygame.image.load("recursos/fundo.png")
+fundoStart = pygame.image.load("recursos/fundoStart.png")
+fundoDead = pygame.image.load("recursos/morte.png")
 
-missel = pygame.image.load("assets/missile.png")
+sword = pygame.image.load("recursos/sword.png")
 tamanho = (800,600)
 tela = pygame.display.set_mode( tamanho ) 
-pygame.display.set_caption("Iron Man do Marcão")
+pygame.display.set_caption("projetoMoon")
 pygame.display.set_icon(icone)
-missileSound = pygame.mixer.Sound("assets/missile.wav")
-explosaoSound = pygame.mixer.Sound("assets/explosao.wav")
+castSound = pygame.mixer.Sound("recursos/cast.wav")
+youdiedSound = pygame.mixer.Sound("recursos/youdied.wav")
 fonte = pygame.font.SysFont("comicsans",28)
 fonteStart = pygame.font.SysFont("comicsans",55)
 fonteMorte = pygame.font.SysFont("arial",120)
-pygame.mixer.music.load("assets/ironsound.mp3")
+pygame.mixer.music.load("recursos/battle.mp3")
 
 branco = (255,255,255)
 preto = (0, 0 ,0 )
 
 
 def jogar(nome):
-    pygame.mixer.Sound.play(missileSound)
+    pygame.mixer.Sound.play(castSound)
     pygame.mixer.music.play(-1)
     posicaoXPersona = 400
     posicaoYPersona = 300
     movimentoXPersona  = 0
     movimentoYPersona  = 0
-    posicaoXMissel = 400
-    posicaoYMissel = -240
-    velocidadeMissel = 1
+    posicaoXSword = 400
+    posicaoYSword = -240
+    velocidadeSword = 1
     pontos = 0
     larguraPersona = 250
     alturaPersona = 127
-    larguaMissel  = 50
-    alturaMissel  = 250
+    larguraSword  = 50
+    alturaSword  = 250
     dificuldade  = 20
 
     while True:
@@ -82,31 +82,31 @@ def jogar(nome):
             
         tela.fill(branco)
         tela.blit(fundo, (0,0) )
-        #pygame.draw.circle(tela, preto, (posicaoXPersona,posicaoYPersona), 40, 0 )
-        tela.blit( iron, (posicaoXPersona, posicaoYPersona) )
+        pygame.draw.circle(tela, preto, (posicaoXPersona,posicaoYPersona), 40, 0 )
+        tela.blit( guardian, (posicaoXPersona, posicaoYPersona) )
         
-        posicaoYMissel = posicaoYMissel + velocidadeMissel
-        if posicaoYMissel > 600:
-            posicaoYMissel = -240
+        posicaoYSword = posicaoYSword + velocidadeSword
+        if posicaoYSword > 600:
+            posicaoYSword = -230
             pontos = pontos + 1
-            velocidadeMissel = velocidadeMissel + 1
-            posicaoXMissel = random.randint(0,800)
-            pygame.mixer.Sound.play(missileSound)
+            velocidadeSword = velocidadeSword + 1
+            posicaoXSword = random.randint(0,800)
+            pygame.mixer.Sound.play(castSound)
             
             
-        tela.blit( missel, (posicaoXMissel, posicaoYMissel) )
+        tela.blit( sword, (posicaoXSword, posicaoYSword) )
         
         texto = fonte.render(nome+"- Pontos: "+str(pontos), True, branco)
         tela.blit(texto, (10,10))
         
         pixelsPersonaX = list(range(posicaoXPersona, posicaoXPersona+larguraPersona))
         pixelsPersonaY = list(range(posicaoYPersona, posicaoYPersona+alturaPersona))
-        pixelsMisselX = list(range(posicaoXMissel, posicaoXMissel + larguaMissel))
-        pixelsMisselY = list(range(posicaoYMissel, posicaoYMissel + alturaMissel))
+        pixelsSwordX = list(range(posicaoXSword, posicaoXSword + larguraSword))
+        pixelsSwordY = list(range(posicaoYSword, posicaoYSword + alturaSword))
         
-        #print( len( list( set(pixelsMisselX).intersection(set(pixelsPersonaX))   ) )   )
-        if  len( list( set(pixelsMisselY).intersection(set(pixelsPersonaY))) ) > dificuldade:
-            if len( list( set(pixelsMisselX).intersection(set(pixelsPersonaX))   ) )  > dificuldade:
+        #print( len( list( set(pixelsSwordX).intersection(set(pixelsPersonaX))   ) )   )
+        if  len( list( set(pixelsSwordY).intersection(set(pixelsPersonaY))) ) > dificuldade:
+            if len( list( set(pixelsSwordX).intersection(set(pixelsPersonaX))   ) )  > dificuldade:
                 dead(nome, pontos)
         
     
@@ -117,7 +117,7 @@ def jogar(nome):
 
 def dead(nome, pontos):
     pygame.mixer.music.stop()
-    pygame.mixer.Sound.play(explosaoSound)
+    pygame.mixer.Sound.play(youdiedSound)
     
     jogadas  = {}
     try:
@@ -194,7 +194,7 @@ def ranking():
 
 
 def start():
-    nome = simpledialog.askstring("Iron Man","Nome Completo:")
+    nome = simpledialog.askstring("Moon","Nome Completo:")
     
     
     
