@@ -25,6 +25,7 @@ fonteStart = pygame.font.SysFont("comicsans",55)
 fonteMorte = pygame.font.SysFont("arial",120)
 pygame.mixer.music.load("recursos/battle.mp3")
 
+
 branco = (255,255,255)
 preto = (0,0,0 )
 amarelo = (255,255,0)
@@ -37,7 +38,7 @@ def jogar(nome):
     posicaoYPersona = 450
     movimentoXPersona  = 0
     movimentoYPersona  = 0
-    posicaoXBola = 400
+    posicaoXBola = 200
     posicaoYBola = -240
     velocidadeBola = 1
     posicaoXSword = 400
@@ -57,7 +58,14 @@ def jogar(nome):
     pulse = 1
     maximo_raio = 60
     minimo_raio =40
+    
+    #circulo preto
 
+    posicaoXCirculoPreto = random.randint(0,800)
+    posicaoYCirculoPreto = random.randint(0,600)
+    movimentoXCirculoPreto = random.choice([-3, 3])
+    movimentoYCirculoPreto = random.choice ([-3, 3])
+    
     while True:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
@@ -91,6 +99,14 @@ def jogar(nome):
         if raio >= maximo_raio or raio <=minimo_raio:
             pulse = -pulse 
         pygame.draw.circle(tela, amarelo, (750,100), raio )
+        
+        posicaoXCirculoPreto += movimentoXCirculoPreto
+        posicaoYCirculoPreto += movimentoYCirculoPreto
+        if posicaoXCirculoPreto < 0 or posicaoXCirculoPreto > 800:
+            movimentoXCirculoPreto = -movimentoXCirculoPreto
+        if posicaoYCirculoPreto < 0 or posicaoYCirculoPreto > 600:
+            movimentoYCirculoPreto = -movimentoYCirculoPreto
+        pygame.draw.circle(tela, preto, (posicaoXCirculoPreto,posicaoYCirculoPreto),10)
         
         tela.blit( guardian, (posicaoXPersona, posicaoYPersona) )
         
